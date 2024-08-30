@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pepe.shoppingcart.dto.ProductRequest;
 import com.pepe.shoppingcart.model.Products;
-import com.pepe.shoppingcart.model.Users;
 import com.pepe.shoppingcart.repository.ProductsRepository;
 
 @RestController
@@ -47,7 +46,7 @@ public class ProductsController {
 
 	// Update a product
 	@RequestMapping(value = "/products/update/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<?> updateProduct(@PathVariable("id") int id, @RequestBody ProductRequest request) {
+	public ResponseEntity<?> updateProduct(@PathVariable("id") Long id, @RequestBody ProductRequest request) {
 		Products product = repository.findById(id).orElse(null);
 		if (product == null) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("There is no product with that id.");
@@ -61,7 +60,7 @@ public class ProductsController {
 
 	// Delete a product
 	@RequestMapping(value = "/products/delete/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<?> deleteUsers(@PathVariable("id") int id, ProductRequest request) {
+	public ResponseEntity<?> deleteUsers(@PathVariable("id") Long id, ProductRequest request) {
 		Products product = repository.findById(id).orElse(null);
 		if (product == null) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("There is no product with that id.");

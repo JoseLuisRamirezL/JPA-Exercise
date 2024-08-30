@@ -1,9 +1,13 @@
 package com.pepe.shoppingcart.controllers;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pepe.shoppingcart.dto.UsersRequest;
 import com.pepe.shoppingcart.dto.UsersUpdateRequest;
+import com.pepe.shoppingcart.exception.UserNotFoundException;
 import com.pepe.shoppingcart.model.Users;
+import com.pepe.shoppingcart.model.WishList;
 import com.pepe.shoppingcart.repository.UsersRepository;
 
 @RestController
@@ -48,7 +54,7 @@ public class UsersController {
 	// Update user, I used the same method to verify the email.
 	@RequestMapping(value="/users/update/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<?> updateUser(
-			@PathVariable("id") int id,
+			@PathVariable("id") Long id,
 			@RequestBody UsersUpdateRequest request){
 		
 		Users users = repository.findById(id).orElse(null);
@@ -65,7 +71,7 @@ public class UsersController {
 	
 	//Delete user
 	@RequestMapping(value="/users/delete/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<?> deleteUsers(@PathVariable("id") int id) {
+	public ResponseEntity<?> deleteUsers(@PathVariable("id") Long id) {
 		Users users = repository.findById(id).orElse(null);
 		if (users == null) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("There is no user with that id.");
@@ -93,4 +99,12 @@ public class UsersController {
 	}
 	
 	
+	//EXERCISE 2 ----------------------------------------------------------------------------
+	@GetMapping("/users/{id}/wishlist")
+	public List<WishList> retrieveWishList(@PathVariable Long id){
+		Optional<Users> user = repository.findById(id);
+		if(user.isEmpty())
+			throw new UserNotFoundException("id"+id);
+		return user.get().getWishList();
+	}
 }

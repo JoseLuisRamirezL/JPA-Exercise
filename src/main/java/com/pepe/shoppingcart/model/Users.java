@@ -1,23 +1,37 @@
 package com.pepe.shoppingcart.model;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Users {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	private String userName;
 	private String email;
 	private String areaOfInterest;
 	
-	public int getId() {
+	@OneToMany(mappedBy = "user")
+	@JsonIgnore
+	private List<WishList> wishList;
+	
+	@OneToMany(mappedBy = "user")
+	@JsonIgnore
+	private List<OrderHistory> orderHistory;
+	
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getUserName() {
@@ -37,5 +51,11 @@ public class Users {
 	}
 	public void setAreaOfInterest(String areaOfInterest) {
 		this.areaOfInterest = areaOfInterest;
+	}
+	public List<WishList> getWishList() {
+		return wishList;
+	}
+	public void setWishList(List<WishList> wishList) {
+		this.wishList = wishList;
 	}
 }
