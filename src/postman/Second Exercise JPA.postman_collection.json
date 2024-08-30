@@ -1,0 +1,293 @@
+{
+	"info": {
+		"_postman_id": "097131d4-0d8b-4057-ab9f-91d6109c5298",
+		"name": "Second Exercise JPA",
+		"description": "Use the Body raw (JSON)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37828870"
+	},
+	"item": [
+		{
+			"name": "Create Product",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"name\": \"Pepe\",\r\n        \"totalProductsInventory\": 3,\r\n        \"price\": 23.5,\r\n        \"description\": \"Test\",\r\n        \"image\": \"223ede\",\r\n        \"productStatus\": true\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/shoppingcartservices/api/products",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shoppingcartservices",
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/shoppingcartservices/api/products",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shoppingcartservices",
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Product",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"totalProductsInventory\": 1,\r\n        \"price\": 23.5,\r\n        \"description\": \"Test\",\r\n        \"image\": \"223ede\",\r\n        \"productStatus\": true\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/shoppingcartservices/api/products/update/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shoppingcartservices",
+						"api",
+						"products",
+						"update",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get product by name",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/shoppingcartservices/api/products/name/Pepe",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shoppingcartservices",
+						"api",
+						"products",
+						"name",
+						"Pepe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get product by price",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/shoppingcartservices/api/products/price/0",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shoppingcartservices",
+						"api",
+						"products",
+						"price",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete product",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/shoppingcartservices/api/products/delete/0",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shoppingcartservices",
+						"api",
+						"products",
+						"delete",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"userName\": \"Last\",\r\n        \"email\": \"pep7@hotmail.com\",\r\n        \"areaOfInterest\": \"Soccer\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/shoppingcartservices/api/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shoppingcartservices",
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/shoppingcartservices/api/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shoppingcartservices",
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"email\": \"peperala88@hotmail.com\",\r\n        \"areaOfInterest\": \"Soccer\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/shoppingcartservices/api/users/update/10",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shoppingcartservices",
+						"api",
+						"users",
+						"update",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/shoppingcartservices/api/users/delete/10",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shoppingcartservices",
+						"api",
+						"users",
+						"delete",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User by username",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/shoppingcartservices/api/users/userName/Pepinote",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shoppingcartservices",
+						"api",
+						"users",
+						"userName",
+						"Pepinote"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
